@@ -1,0 +1,17 @@
+{
+  "name": "claude-code-web-example",
+  "version": "1.0.0",
+  "description": "A simple Hello World web application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "hello-world",
+    "web",
+    "example"
+  ],
+  "author": "",
+  "license": "ISC"
+}
