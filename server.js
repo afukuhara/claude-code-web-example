@@ -50,8 +50,8 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 
-  // 毎日午前9時(JST=UTC+9, つまりUTC 0時)に実行
-  cron.schedule('0 0 * * *', async () => {
+  // 毎日 JST 10:00 (UTC 01:00) に実行
+  cron.schedule('0 1 * * *', async () => {
     console.log('定期チェック開始...');
     try {
       await checkAndTranslate();
@@ -60,5 +60,5 @@ server.listen(PORT, () => {
     }
   });
 
-  console.log('定期翻訳スケジュール設定完了 (毎日 UTC 00:00)');
+  console.log('定期翻訳スケジュール設定完了 (毎日 JST 10:00 / UTC 01:00)');
 });

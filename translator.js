@@ -4,6 +4,7 @@ const Anthropic = require('@anthropic-ai/sdk');
 const { XMLParser } = require('fast-xml-parser');
 const fs = require('fs');
 const path = require('path');
+const { sendTranslationMail } = require('./mailer');
 
 const FEED_URL = 'https://simonwillison.net/atom/entries/';
 const DATA_FILE = path.join(__dirname, 'data', 'translations.json');
@@ -171,6 +172,14 @@ async function checkAndTranslate() {
   data.last_checked = new Date().toISOString();
   delete data.last_error;
   saveData(data);
+
+  if (translated.length > 0) {
+    try {
+      await sendTranslationMail(translated);
+    } catch (err) {
+      console.error('メール送信エラー:', err.message);
+    }
+  }
 
   console.log(`チェック完了。翻訳済み: ${translated.length}件`);
   return { newCount: translated.length };
