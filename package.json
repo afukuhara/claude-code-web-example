@@ -1,17 +1,19 @@
 {
   "name": "claude-code-web-example",
   "version": "1.0.0",
-  "description": "A simple Hello World web application",
+  "description": "Simon Willison blog Japanese translator",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "translate": "node translator.js"
   },
-  "keywords": [
-    "hello-world",
-    "web",
-    "example"
-  ],
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.51.0",
+    "fast-xml-parser": "^4.5.3",
+    "node-cron": "^3.0.3"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC"
 }
